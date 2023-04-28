@@ -23,7 +23,7 @@ function createGalleryCard(galleryItems) {
             alt="${description}"
           />
         </a>
-      </li> `;
+      </li>`;
     })
     .join("");
 }
