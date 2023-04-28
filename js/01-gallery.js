@@ -4,6 +4,7 @@ import { galleryItems } from "./gallery-items.js";
 console.log(galleryItems);
 
 const galleryListRef = document.querySelector(".gallery");
+
 const cardMarkup = createGalleryCard(galleryItems);
 
 galleryListRef.insertAdjacentHTML("beforeend", cardMarkup);
@@ -31,4 +32,11 @@ function onCardGalleryClick(event) {
   event.preventDefault();
 
   const largeImageUrl = event.target.dataset.source;
+
+  const instance = basicLightbox.create(`
+    <div class="modal">
+      <img src="${largeImageUrl}" width="800" height="600">
+    </div>`);
+
+  instance.show();
 }
