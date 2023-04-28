@@ -26,12 +26,14 @@ galleryListRef.insertAdjacentHTML("beforeend", createGalleryCard(galleryItems));
 
 galleryListRef.addEventListener("click", onCardGalleryClick);
 
+let instance;
+
 function onCardGalleryClick(event) {
   event.preventDefault();
 
   const largeImageUrl = event.target.dataset.source;
 
-  const instance = basicLightbox.create(
+  instance = basicLightbox.create(
     `
     <div class="modal">
       <img src="${largeImageUrl}" width="800" height="600">
@@ -44,9 +46,13 @@ function onCardGalleryClick(event) {
 
   instance.show();
 
-  window.addEventListener("keydown", (event) => {
-    if (event.code === "Escape") {
-      instance.close();
-    }
-  });
+  window.addEventListener("keydown", onEscapeKeyClick);
+}
+
+function onEscapeKeyClick(event) {
+  console.log(event.code);
+  if (event.code === "Escape") {
+    instance.close();
+    window.removeEventListener("keydown", onEscapeKeyClick);
+  }
 }
