@@ -5,12 +5,6 @@ console.log(galleryItems);
 
 const galleryListRef = document.querySelector(".gallery");
 
-const cardMarkup = createGalleryCard(galleryItems);
-
-galleryListRef.insertAdjacentHTML("beforeend", cardMarkup);
-
-galleryListRef.addEventListener("click", onCardGalleryClick);
-
 function createGalleryCard(galleryItems) {
   return galleryItems
     .map(({ preview, original, description }) => {
@@ -27,6 +21,10 @@ function createGalleryCard(galleryItems) {
     })
     .join("");
 }
+
+galleryListRef.insertAdjacentHTML("beforeend", createGalleryCard(galleryItems));
+
+galleryListRef.addEventListener("click", onCardGalleryClick);
 
 function onCardGalleryClick(event) {
   event.preventDefault();
