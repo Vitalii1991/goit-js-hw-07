@@ -39,4 +39,10 @@ function onCardGalleryClick(event) {
     </div>`);
 
   instance.show();
+
+  window.addEventListener("keydown", (event) => {
+    if (event.code === "Escape") {
+      instance.close();
+    }
+  });
 }
