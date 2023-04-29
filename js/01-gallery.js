@@ -34,8 +34,7 @@ function onCardGalleryClick(event) {
   const largeImageUrl = event.target.dataset.source;
 
   instance = basicLightbox.create(
-    `
-    <div class="modal">
+    `<div class="modal">
       <img src="${largeImageUrl}" width="800" height="600">
     </div>`,
     {
