@@ -36,22 +36,28 @@ function onCardGalleryClick(event) {
   instance = basicLightbox.create(
     `<div class="modal">
       <img src="${largeImageUrl}" width="800" height="600">
-    </div>`,
-    {
-      onShow: (instance) => console.log("onShow", instance),
-      onClose: (instance) => console.log("onClose", instance),
-    }
+    </div>`
   );
 
   instance.show();
 
   window.addEventListener("keydown", onEscapeKeyClick);
+
+  document.addEventListener("click", onEventTargetClick);
 }
 
 function onEscapeKeyClick(event) {
-  console.log(event.code);
   if (event.code === "Escape") {
     instance.close();
     window.removeEventListener("keydown", onEscapeKeyClick);
+  }
+}
+
+function onEventTargetClick(event) {
+  const modal = document.querySelector(".basicLightbox");
+
+  if (modal.contains(event.target)) {
+    instance.close();
+    document.removeEventListener("click", onEventTargetClick);
   }
 }
