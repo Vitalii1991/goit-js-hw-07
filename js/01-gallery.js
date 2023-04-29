@@ -41,7 +41,7 @@ function onCardGalleryClick(event) {
 
   instance.show();
 
-  window.addEventListener("keydown", onEscapeKeyClick);
+  window.addEventListener("keydown", onEscapeKeyClick, { once: true });
 
   document.addEventListener("click", onEventTargetClick);
 }
@@ -49,7 +49,6 @@ function onCardGalleryClick(event) {
 function onEscapeKeyClick(event) {
   if (event.code === "Escape") {
     instance.close();
-    window.removeEventListener("keydown", onEscapeKeyClick);
   }
 }
 
