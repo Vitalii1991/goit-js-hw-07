@@ -41,18 +41,23 @@ function onCardGalleryClick(event) {
 
   instance.show();
 
-  window.addEventListener("keydown", onEscapeKeyClick, { once: true });
+  window.addEventListener("keydown", onEscapeKeyClick);
 
   document.addEventListener("click", onEventTargetClick);
 }
 
 function onEscapeKeyClick(event) {
+  console.log(event.code);
+
   if (event.code === "Escape") {
     instance.close();
+    window.removeEventListener("keydown", onEscapeKeyClick);
   }
 }
 
 function onEventTargetClick(event) {
+  console.log(event.pointerType, event.type);
+
   const modal = document.querySelector(".basicLightbox");
 
   if (modal.contains(event.target)) {
