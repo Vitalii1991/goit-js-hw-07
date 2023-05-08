@@ -22,3 +22,27 @@ button {
   padding: 8px 12px;
   cursor: pointer;
 }
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+li {
+  list-style: none;
+}
+
+.button {
+  text-decoration: none;
+
+  display: inline-block;
+  min-width: 180px;
+  padding: 8px;
+
+  text-align: center;
+
+  background-color: rgba(5, 127, 13, 0.403);
+  color: black;
+  border-radius: 10px;
+}
